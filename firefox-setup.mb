@@ -1,5 +1,4 @@
 To set up firefox to recongize your CAC Card
-
 # Note Replace """46dhcpaa.default""" with your actual one 
 # Do this by entering 
 ls ~/.mozilla/firefox
