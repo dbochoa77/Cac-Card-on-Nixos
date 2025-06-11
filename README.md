@@ -24,9 +24,31 @@ Working on windows 11 sucks.
 Therefore working on linux is much eaiser. 
 Due to the natural of nixOS being unique to other distroswith the installation of packages this streamlines the process. 
 
+
+          ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖
+          ▜███▙       ▜███▙  ▟███▛
+           ▜███▙       ▜███▙▟███▛
+            ▜███▙       ▜██████▛
+     ▟█████████████████▙ ▜████▛     ▟▙
+    ▟███████████████████▙ ▜███▙    ▟██▙
+           ▄▄▄▄▖           ▜███▙  ▟███▛
+          ▟███▛             ▜██▛ ▟███▛
+         ▟███▛               ▜▛ ▟███▛
+▟███████████▛                  ▟██████████▙
+▜██████████▛                  ▟███████████▛
+      ▟███▛ ▟▙               ▟███▛
+     ▟███▛ ▟██▙             ▟███▛
+    ▟███▛  ▜███▙           ▝▀▀▀▀
+    ▜██▛    ▜███▙ ▜██████████████████▛
+     ▜▛     ▟████▙ ▜████████████████▛
+           ▟██████▙       ▜███▙
+          ▟███▛▜███▙       ▜███▙
+         ▟███▛  ▜███▙       ▜███▙
+         ▝▀▀▀    ▀▀▀▀▘       ▀▀▀▘
+
 # How to do it      #
 ---------------------
-Packages Needed 
+# Packages Needed #
 # PC/SC daemon: backend middleware for smart card communication
 pcsclite
 
