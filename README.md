@@ -1,71 +1,72 @@
-# Cac-Card-on-Nixos #
+# Cac Card on Nixos 
+
+## Overview
+This guide shows how to get a CAC reader to work on **NixOS**
+
+## Who is this for?
+Anyone using Linux with the nix language
+
+## Why               
 ---------------------
-# Who               #
----------------------
-For people that what to get a cac reader working with nixOS
+Working on windows 11 sucks. NixOS allows a cleaner package management. 
 
-# What              #
----------------------
-A step by step on what pkgs and services to get for getting a cac card to work. 
-Includes how to add the PKCS #11 for firefox to work
-"Note it works on librewolf on my device too"
+## What you'll need 
+1. Install required Packages
+2. Enable the smart card daemon
+3. Add the PKCS#11 module to Firefox 
 
-# Where             #
----------------------
-For you people with linux based computers
+--- 
 
-# When              #
----------------------
-ASAP
+## Packages Needed 
+- **pcsclite** – PC/SC daemon backend (smart card communication)  
+- **pcsc-tools** – CLI utilities for listing and debugging readers  
+- **opensc** – Toolkit for CAC/PIV card interaction  
+- **ccid** – CCID protocol driver for USB readers  
+- **nssTools** – NSS CLI utilities (`modutil`, `certutil`, etc.) for certificate management  
 
-# Why               #
----------------------
-Working on windows 11 sucks. 
-Therefore working on linux is much eaiser. 
-Due to the natural of nixOS being unique to other distroswith the installation of packages this streamlines the process. 
+Install them ini your 'environment.systemPacakges'
 
-
-
-# How to do it      #
----------------------
-# Packages Needed #
-# PC/SC daemon: backend middleware for smart card communication
-pcsclite
-
-# CLI tools for listing and debugging smart card readers
-pcsc-tools
-
-# Toolkit for interacting with smart cards (e.g., CAC, PIV)
-opensc
-
-# CCID protocol USB smart card reader driver
-ccid
-
-# NSS CLI tools (e.g., certutil, pk12util) for managing certs
-nssTools
-
-# Enable Daemon 
-sudo systemctl enable pcscd.socket
+## Enable Daemon 
+```bash
+sudo systemctl enable pcscd.socketk
 sudo systemctl start pcscd.socket
+```
 
-# Configure Firefox
-Firefox Configurtion 
-To set up firefox to recongize your CAC Card
-- Note Replace """46dhcpaa.default""" with your actual one
-- Do this by entering
+## Configure Firefox
+
+### 1. Find your profile directory
+
+```bash
 ls ~/.mozilla/firefox
+Example:
+```
+46dhcpaa.default
+```
 
-# Use this command to add the OpenSC PKCS#11 Module
-modutil -dbdir sql:$HOME/.mozilla/firefox/"""46dhcpaa.default""" \
-- add "OpenSC" \
-- libfile /run/current-system/sw/lib/opensc-pkcs11.so
+###
+- Note Replace """46dhcpaa.default""" with your actual one
 
-# Verify, by going to the search bar and entering
-about:preferences#privacy
+### 2. Add the OpenSC PKCS#11 module
+```bash
+modutil -dbdir sql:$HOME/.mozilla/firefox/46dhcpaa.default \
+  add "OpenSC" \
+  libfile /run/current-system/sw/lib/opensc-pkcs11.so
+```
 
-# Scroll down to Secuirty Devices you should see
- OpenSC
-   |
-   --> Cac Module
+### 3. Verify in Firefox
 
-See if it works now
+1. Open `about:preferences#privacy` in the URL bar  
+2. Scroll to **Security Devices**  
+3. You should see:  
+   ```
+   OpenSC  →  CAC Module
+   ```
+
+---
+
+## Test
+
+Insert your CAC card and attempt to log in. If the module is correctly installed, your certificates will be detected.
+
+---
+
