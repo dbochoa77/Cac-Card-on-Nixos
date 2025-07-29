@@ -1,13 +1,8 @@
-#################################
-# Services Needed to be Enabled #
-#################################
+# Services 
   services.pcscd.enable = true;
 
-#################################
-#       Packages Needed         #
-#################################
- environment.systemPackages = with pkgs; [
-# Cac Card Tools
+# Packages Needed         
+  nvironment.systemPackages = with pkgs; [
   pcsclite
   pcsc-tools
   opensc

@@ -44,6 +44,11 @@ ccid
 # NSS CLI tools (e.g., certutil, pk12util) for managing certs
 nssTools
 
+# Enable Daemon 
+sudo systemctl enable pcscd.socket
+sudo systemctl start pcscd.socket
+
+# Configure Firefox
 Firefox Configurtion 
 To set up firefox to recongize your CAC Card
 - Note Replace """46dhcpaa.default""" with your actual one
